@@ -5,12 +5,41 @@
             <div class="col-lg-12">
                 <h1>Reminders</h1>
 
-                <a href="reminders/create" class="btn btn-primary">Create Reminder</a>
+                <a href="reminders/create">Create Reminder</a>
                 
             </div>
         </div>
-    </div>
+        <br>
 
+        <div class="row" id="reminders-list">
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Time Stamp</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($data['reminders'] as $reminder): ?>
+                  <tr>
+                    <td> <?php echo $reminder['subject'] ?></td>
+                    <td> <?php echo $reminder['created_at'] ?> </td>
+                    <td> <a href="/reminders/update">Update</a></td>
+                    <td> <a href="/reminders/delete">Delete</a></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+
+
+            
+
+        </div>
+        <br>
+    </div>
 
 
     <?php require_once 'app/views/templates/footer.php' ?>
