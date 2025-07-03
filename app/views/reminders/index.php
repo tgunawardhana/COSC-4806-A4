@@ -4,6 +4,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Reminders</h1>
+
+                <a href="reminders/create" class="btn btn-primary">Create Reminder</a>
+                
             </div>
         </div>
     </div>
