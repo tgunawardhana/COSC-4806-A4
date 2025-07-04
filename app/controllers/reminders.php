@@ -27,8 +27,9 @@ class Reminders extends Controller {
       //$subject = $_REQUEST['subject'];
       //$user_id = $_SESSION['user_id'];
       $id = $_POST['id'];
+      $subject = $_POST['sub'];
 
-       $this->view('reminders/update', ['id' => $id]);
+       $this->view('reminders/update', ['id' => $id, 'subject'=> $subject]);
     }
   
     public function update(){
