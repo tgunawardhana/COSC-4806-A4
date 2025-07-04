@@ -12,7 +12,6 @@ class Reminders extends Controller {
     }
 
     public function create(){
-
       $this->view('reminders/create');
     }
 
@@ -23,15 +22,26 @@ class Reminders extends Controller {
       $reminder = $this->model('Reminder');
       $reminder->insert_reminder($subject, $user_id);
     }
+
+    public function edit(){
+      //$subject = $_REQUEST['subject'];
+      //$user_id = $_SESSION['user_id'];
+      $id = $_POST['id'];
+
+       $this->view('reminders/update', ['id' => $id]);
+    }
   
-    public function update($id){
+    public function update(){
       $subject = $_REQUEST['subject'];
-      $user_id = $_SESSION['user_id'];
+      $id = $_REQUEST['id'];
+      //$user_id = $_SESSION['user_id'];
+
       $reminder = $this->model('Reminder');
-      $reminder->update_reminder($id, $subject, $user_id);
+      $reminder->update_reminder($id, $subject);
     }
 
-   public function delete($id){
+   public function delete(){
+     $id = $_POST['id'];
      $reminder = $this->model('Reminder');
      $reminder->delete_reminder($id);
    }
