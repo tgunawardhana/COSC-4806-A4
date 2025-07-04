@@ -46,4 +46,12 @@ class Reminders extends Controller {
      $reminder = $this->model('Reminder');
      $reminder->delete_reminder($id);
    }
+
+    public function updateStatus(){
+      $id = $_POST['id'];
+      $completed = $_POST['completed'];
+      $reminder = $this->model('Reminder');
+      $reminder->updateStatus($id, $completed);
+    }
+  
 }
