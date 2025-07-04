@@ -30,6 +30,7 @@
                     <td> 
                       <form method="post" action="/reminders/edit" style="display:inline;">
                         <input type="hidden" name="id" value="<?php echo $reminder['id']; ?>">
+                        <input type="hidden" name="sub" value="<?php echo $reminder['subject']; ?>">
                         <button type="submit">Update</button>
                       </form>
 
