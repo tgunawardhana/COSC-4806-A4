@@ -27,8 +27,13 @@
                   <tr>
                     <td> <?php echo $reminder['subject'] ?></td>
                     <td> <?php echo $reminder['created_at'] ?> </td>
-                    <td> <a href="/reminders/update">Update</a></td>
-                    <td> <a href="/reminders/delete">Delete</a></td>
+                    <td> 
+                      <?php echo  ' <a href="/reminders/update/' . $reminder['id'] . '">Update</a>' ?>
+                    
+                    </td>
+                    <td> 
+                      <?php echo  ' <a href="/reminders/delete/' . $reminder['id'] .'">Delete</a>' ?>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
