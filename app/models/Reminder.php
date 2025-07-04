@@ -23,7 +23,8 @@ class Reminder {
     header("location: /reminders/index");
   }
 
-  public function update_reminder($id, $subject, $user_id){
+  public function update_reminder($id, $subject){
+    $user_id = $_SESSION['user_id'];
     $dbh = db_connect();
     $statement = $dbh->prepare("update reminders set subject = :subject, user_id = :user_id where id = :id;");
     $statement->bindParam(':subject', $subject);
@@ -38,6 +39,7 @@ class Reminder {
     $statement = $dbh->prepare("delete from reminders where id = :id;");
     $statement->bindParam(':id', $id);
     $statement->execute();
+    header("location: /reminders/index");
   }
   
 }
