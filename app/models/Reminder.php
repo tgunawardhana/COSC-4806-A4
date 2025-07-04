@@ -44,5 +44,14 @@ class Reminder {
     $statement->execute();
     header("location: /reminders/index");
   }
+
+  public function updateStatus($id, $completed){
+    $dbh = db_connect();
+    $statement = $dbh->prepare("update reminders set completed = :completed where id = :id;");
+    $statement->bindParam(':completed', $completed);
+    $statement->bindParam(':id', $id);
+    $statement->execute();
+    header("location: /reminders/index");
+  }
   
 }
