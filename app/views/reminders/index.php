@@ -5,14 +5,14 @@
             <div class="col-lg-12">
                 <h1>Reminders</h1>
 
-                <a href="reminders/create">Create Reminder</a>
+                <a href="/reminders/create">Create Reminder</a>
                 
             </div>
         </div>
         <br>
 
         <div class="row" id="reminders-list">
-
+          
             <table>
               <thead>
                 <tr>
@@ -28,11 +28,21 @@
                     <td> <?php echo $reminder['subject'] ?></td>
                     <td> <?php echo $reminder['created_at'] ?> </td>
                     <td> 
-                      <?php echo  ' <a href="/reminders/update/' . $reminder['id'] . '">Update</a>' ?>
+                      <form method="post" action="/reminders/edit" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo $reminder['id']; ?>">
+                        <button type="submit">Update</button>
+                      </form>
+
                     
                     </td>
                     <td> 
-                      <?php echo  ' <a href="/reminders/delete/' . $reminder['id'] .'">Delete</a>' ?>
+                      
+                      <form method="post" action="/reminders/delete" style="display:inline;">
+                        <input type="hidden" name="id" value="<?php echo $reminder['id']; ?>">
+                        <button type="submit">Delete</button>
+                      </form>
+
+                      
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -40,7 +50,7 @@
             </table>
 
 
-            
+          
 
         </div>
         <br>
