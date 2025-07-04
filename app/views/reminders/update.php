@@ -14,7 +14,7 @@
     <fieldset>
       <div class="form-group">
         <label for="subject">Subject</label>
-        <input required type="text" class="form-control" name="subject">
+        <input required type="text" class="form-control" name="subject" value="<?php echo $data['subject'] ?>" >
       </div>
 
         <input type="hidden" name="id" value="<?php echo $data['id'] ?>"> 
