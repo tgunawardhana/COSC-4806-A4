@@ -7,8 +7,11 @@ class Reminder {
   }
 
   public function get_all_reminders(){
+    // Get all the reminders of the current user only
+    $user_id = $_SESSION['user_id'];
     $dbh = db_connect();
-    $statement = $dbh->prepare("select * from reminders;");
+    $statement = $dbh->prepare("SELECT * FROM reminders WHERE user_id = :user_id;");
+    $statement->bindParam(':user_id', $user_id);
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
@@ -24,11 +27,11 @@ class Reminder {
   }
 
   public function update_reminder($id, $subject){
-    $user_id = $_SESSION['user_id'];
+    //$user_id = $_SESSION['user_id'];
     $dbh = db_connect();
-    $statement = $dbh->prepare("update reminders set subject = :subject, user_id = :user_id where id = :id;");
+    $statement = $dbh->prepare("update reminders set subject = :subject where id = :id;");
     $statement->bindParam(':subject', $subject);
-    $statement->bindParam(':user_id', $user_id);
+    //$statement->bindParam(':user_id', $user_id);
     $statement->bindParam(':id', $id);
     $statement->execute();
     header("location: /reminders/index");
